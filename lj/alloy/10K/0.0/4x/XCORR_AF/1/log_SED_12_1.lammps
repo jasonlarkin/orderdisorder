@@ -1,0 +1,74 @@
+	reset_timestep  	0
+	fix 			1 all nve
+	dump 			vel all custom ${w_step} dump_${iseed}_${ifft}.vel vx vy vz
+	dump 			vel all custom 32 dump_${iseed}_${ifft}.vel vx vy vz
+	dump 			vel all custom 32 dump_12_${ifft}.vel vx vy vz
+	dump 			vel all custom 32 dump_12_1.vel vx vy vz
+	dump_modify 		vel sort id
+	dump 			pos all custom ${w_step} dump_${iseed}_${ifft}.pos xu yu zu
+	dump 			pos all custom 32 dump_${iseed}_${ifft}.pos xu yu zu
+	dump 			pos all custom 32 dump_12_${ifft}.pos xu yu zu
+	dump 			pos all custom 32 dump_12_1.pos xu yu zu
+	dump_modify 		pos sort id
+	thermo_style 		custom step temp press vol
+	thermo			5000
+	timestep		${dt}
+	timestep		0.002
+	run			${w_total}
+	run			131072
+Memory usage per processor = 1.64338 Mbytes
+Step Temp Press Volume 
+       0  0.080590005   -0.0181858     241.0483 
+    5000  0.082737847 -0.035321213     241.0483 
+   10000  0.076232044  0.015909657     241.0483 
+   15000  0.077555297 0.0048650799     241.0483 
+   20000  0.075370179  0.026035404     241.0483 
+   25000  0.082982927  -0.03446323     241.0483 
+   30000  0.080955545 -0.011971232     241.0483 
+   35000  0.078388136 0.0007032972     241.0483 
+   40000  0.083090046 -0.035948294     241.0483 
+   45000   0.07887944 -0.0065991727     241.0483 
+   50000  0.079340623  -0.01257615     241.0483 
+   55000  0.080556027 -0.016050811     241.0483 
+   60000  0.079921389  -0.01287094     241.0483 
+   65000  0.078956073 -0.0077198151     241.0483 
+   70000  0.081667469 -0.027425077     241.0483 
+   75000  0.077691316 0.0078501193     241.0483 
+   80000  0.076650927  0.017527881     241.0483 
+   85000  0.074551755  0.027954615     241.0483 
+   90000  0.080417046 -0.015503365     241.0483 
+   95000  0.080508906  -0.01760392     241.0483 
+  100000  0.083995119 -0.050107499     241.0483 
+  105000  0.074852773  0.027675799     241.0483 
+  110000  0.077784354 0.0038227071     241.0483 
+  115000  0.082567377 -0.034431392     241.0483 
+  120000  0.078093538 -0.002454631     241.0483 
+  125000  0.079153162 -0.011330845     241.0483 
+  130000  0.082332643 -0.029236555     241.0483 
+  131072  0.079027996 -0.0062602234     241.0483 
+Loop time of 61.9469 on 2 procs for 131072 steps with 256 atoms
+
+Pair  time (%) = 29.0406 (46.8799)
+Neigh time (%) = 0.00114012 (0.00184048)
+Comm  time (%) = 14.8396 (23.9553)
+Outpt time (%) = 14.6311 (23.6187)
+Other time (%) = 3.43446 (5.54421)
+
+Nlocal:    128 ave 132 max 124 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
+Nghost:    1109 ave 1113 max 1105 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
+Neighs:    5504 ave 5674 max 5334 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
+
+Total # of neighbors = 11008
+Ave neighs/atom = 43
+Neighbor list builds = 2
+Dangerous builds = 0
+	unfix			1
+	undump			vel
+	undump			pos
+
+next ifft
+jump lmp.in.sed.12 loop_fft
+

@@ -1,5 +1,5 @@
 
-function m_dsf_long( str , kpt , x0 , freq, eigvec )
+function DSF = m_dsf_long( str , kpt , x0 , freq, eigvec )
 %M_DSF_LONG
 %	m_dsf_long( str , kpt , x0 , freq, eigvec )
 %	

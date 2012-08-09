@@ -154,7 +154,7 @@ tic
 		PE+KE;
 		
 		KEXCORR = xcorr(KE,'coeff'); PEXCORR = xcorr(PE,'coeff');
-            EXCORR = xcorr(ETOT-mean(ETOT),'coeff');
+            EXCORR = xcorr(ETOT,'coeff');
             
         SED.SED(ikpt,:,imode) =...
             SED.SED(ikpt,:,imode) + EXCORR(NMD.NUM_TSTEPS:NMD.NUM_TSTEPS*2-1) ;

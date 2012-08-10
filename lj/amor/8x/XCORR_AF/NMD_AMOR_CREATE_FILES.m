@@ -199,7 +199,7 @@ dlmwrite(str.write,output,'-append','delimiter','\t');
         str.change = ['lmp' int2str(iseed) '.sh'];
         str.cmd1 = ['-e ''s/\<' str.orig '\>/' str.change '/g'' '];
         str.orig = 'runpath';
-        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy));
+        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy),'/work');
         str.temp = strcat('-e ''s|',str.orig,'|',str.change);
         str.cmd2 = [str.temp '|g'' '];
         str.orig = 'LMP.TEMP';
@@ -306,7 +306,7 @@ system(...
         str.change = ['NMD_' int2str(imode)];
         str.cmd1 = ['-e ''s/\<' str.orig '\>/' str.change '/g'' '];
         str.orig = 'runpath';
-        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy) );
+        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy),'/work' );
         str.temp = strcat('-e ''s|',str.orig,'|',str.change);
         str.cmd2 = [str.temp '|g'' '];
         str.orig = 'NMD_TEMP.m';
@@ -320,7 +320,7 @@ system(...
         system(str.cmd);
 %NMD_ISEED_IKSLICE.m-------------------------------------------------------        
         str.orig = 'runpath';
-        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy) );
+        str.change = strcat(NMD.str.main,'/',int2str(NMD.seed.alloy),'/work' );
         str.temp = strcat('-e ''s|',str.orig,'|',str.change);
         str.cmd1 = [str.temp '|g'' '];
         str.orig = 'IMSLICE';
